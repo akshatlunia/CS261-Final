@@ -11,11 +11,16 @@ CS 261 FINAL
 *********************************************/
 
 #include "blackjack.h"
-#include "stdio.h"
+#include <stdio.h>
 
 int main(){
     int again = 1;
     int chips = 1000;
+    Deck deck;
+    populateDeck(&deck);
+    shuffleDeck(&deck);
+    //shuffling twice here
+    shuffleDeck(&deck);
     while(again == 1){
         if(chips < 0){
             printf("You have gone bankrupt!");

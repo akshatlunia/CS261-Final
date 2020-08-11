@@ -4,12 +4,15 @@
 #define BLACKJACK_H
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
 typedef struct Card{
     //value of each card
     int rank;
+    int suit;
     //This will let us know who to assign the card to
     string holder;
 }Card;
@@ -30,11 +33,14 @@ typedef struct Player{
 typedef struct Deck{
     //For the amount of cards in the deck
     Card cards[52];
-    int num_cards;
+    int num_cards = 52;
     //To get the top card of the deck
-    int top_card;
+    int top_card = 0;
 }Deck;
 
-
+void populateDeck(Deck*)
+void shuffleDeck(Deck*);
+int set_rank(int);
+int set_suit(int);
 
 #endif
