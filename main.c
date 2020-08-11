@@ -16,12 +16,18 @@ CS 261 FINAL
 int main(){
     int again = 1;
     int chips = 1000;
-    Deck deck;
-    populateDeck(&deck);
-    shuffleDeck(&deck);
+    Deck *deck;
+    deck = deckInit(deck);
+    deck = populateDeck(deck);
+    deck = shuffleDeck(deck);
     //shuffling twice here
-    shuffleDeck(&deck);
+    deck = shuffleDeck(deck);
+    printf("deck card at top is %d\n", deck->top_card.rank);
+    Game *game;
+    game = gameInit(game);
+    game = createPlayers(game, 1);
     while(again == 1){
+        deck = shuffleDeck(deck);
         if(chips < 0){
             printf("You have gone bankrupt!");
             again = 0;
@@ -31,5 +37,8 @@ int main(){
         scanf("%d", &again); 
         }
     }
+    deleteDeck(deck);
+    deletePlayers(game);
+    deleteGame(game);
     return 0;
 }
